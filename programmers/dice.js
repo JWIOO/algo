@@ -12,7 +12,7 @@ function solution(a, b, c, d) {
                     if( dice[0] === dice[3]){
                         answer = dice[0] * 1111
                     }
-                    
+                    ㅇ
                     // 3개의 주사위가 같을 경우
                     else if (dice[0] === dice[1] && dice[1] === dice[2] && dice[2] !== dice[3]){
                         answer = (10 * dice[0] + dice[3])**2
