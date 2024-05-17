@@ -1,17 +1,22 @@
 
 function solution(dots) {
-
-    let [[x1, y1], [x2, y2], [x3, y3], [x4, y4]] = dots;
-
-    if ((y1 - y2)/ (x1 - x2 ) === (y3 - y4)/(x3 - x4)) { return 1;}
-    if ((y1 - y3)/ (x1 - x3 ) === (y2 - y4)/(x2 - x4)) { return 1;}
-    if ((y1 - y4)/ (x1 - x4 ) === (y3 - y2)/(x3 - x2)) { return 1;}
-       
-   
-    if (((y1 === y2) && (x1 === x2 )) && ((y3 === y4) && (x3 === x4 ))){ return 1;}
-    if (((y1 === y3) && (x1 === x3 )) && ((y2 === y4) && (x2 === x4 ))){ return 1;}
-    if (((y1 === y4) && (x1 === x4 )) && ((y3 === y2) && (x2 === x2 ))){ return 1;}
-   
-     else{return 0;}
-
-}
+    const [dot1, dot2, dot3, dot4] = dots;
+  
+    //네 점 사이의 기울기 계산
+    const slope = (dot1, dot2) => (dot1[1] - dot2[1]) / (dot1[0] - dot2[0]);
+  
+    const slope12 = slope(dot1, dot2);
+    const slope13 = slope(dot1, dot3);
+    const slope14 = slope(dot1, dot4);
+    const slope23 = slope(dot2, dot3);
+    const slope24 = slope(dot2, dot4);
+    const slope34 = slope(dot3, dot4);
+    
+  
+    //기울기 비교해서 평행하면 1, 아니면 0출력
+    if (slope12 === slope34 || slope13 === slope24 || slope14 === slope23) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
