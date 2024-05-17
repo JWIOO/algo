@@ -1,42 +1,20 @@
-```jsx
-
 function solution(a, b) {
-
-    //최대공약수 구하기
-let GCD = (a, b) => {
-    let gcd = 1;
-
-    for(let i=2; i < Math.min(a, b) + 1; i++){
-        if(a % i === 0 && b % i === 0){
-            gcd = i;
-        }
+    let tempB = b;
+  
+    //분모b를 2로 나누어질 수 있을 때까지 나누기
+    while (tempB % 2 === 0) {
+      tempB /= 2;
     }
-
-    return gcd;
-};
-
-    //최대공약수를 저장하고, a, b 각각 나누어서 기약분수 만들기
-    let realGcd = GCD(a, b);
-    let irreducibleA = (a/realGcd);
-    let irreducibleB = (b/realGcd);
-
-    //irreducible fraction의 분모의 공약수들(divisor) 구하기
-    let divisor = [];
-
-    for(let j=1; j<Math.min(irreducibleA, irreducibleB)+1; j++){
-        if(irreducibleA % j === 0 && irreducibleB % j === 0){
-            divisor.push(j);
-        }
+  
+    //분모b를 5로 나누어질 수 있을 때까지 나누기
+    while (tempB % 5 === 0) {
+      tempB /= 5;
     }
-
-    //divisor에 2 혹은 5만 존재하는지 확인하기
-    for(let k=0; k<divisor.length ; k++){
-        if( divisor[k] !== 1 && divisor[k] !== 2 && divisor[k] !==  5){
-            return 2;
-        }
-         
-        else{ return 1;}
-}
-
-}
-```
+  
+    //분자a가 나누어 떨어지면 유한 소수(1) 출력, 아니면 무한 소수(2) 출력
+    if (a % tempB === 0) {
+      return 1; // 유한 소수
+    } else {
+      return 2; // 무한 소수
+    }
+  }
