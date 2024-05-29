@@ -39,5 +39,5 @@ function solution(n, lost, reserve) {
     }
   });
 
-  return canAttendStudent; // 최종적으로 체육수업을 들을 수 있는 학생 수 반환
+  return canAttendStudent; //최종적으로 체육수업을 들을 수 있는 학생 수 반환
 }
